@@ -143,6 +143,12 @@ import json # this package helps make json prettier and easier to handle than a 
 
 print(json.dumps(train[10344], sort_keys=True, indent=4, separators=(',', ': '))) # Harder to write, but easier to read.
 
+# Creating smaller, more accessible json file for anybody to play with
+json_tiny = train[1000:1300]
+
+with open('json_tiny.json', 'w') as outfile:
+    json.dump(json_tiny, outfile)
+
 #endregion
 
 
@@ -206,7 +212,7 @@ def summ_catch(text):
 # df['TextRank_summary']=df['text'].apply(summ_catch)
 
 # slimming df down to a few rows to apply the TextRank function
-df_tiny = df.loc[1000:1100,('summary','text')].copy() # copy avoids the case where changing df_tiny also changes df
+df_tiny = df.loc[1000:1300,('summary','text')].copy() # copy avoids the case where changing df_tiny also changes df
 df_tiny['TextRank_summary']=df_tiny['text'].apply(summ_catch)
 df_tiny.loc[:,['summary','TextRank_summary']] # hard to read
 df_tiny.apply(summ_compare, axis=1) # less hard to read
