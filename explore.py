@@ -132,12 +132,12 @@ print(train[10344]['summary'])
 #
 # TL;DR THIS DATABASE IS AWESOME!!!!!!
 
-train[8999]['coverage'] # TODO Find Coverage Formula in paper
+train[8999]['coverage']
 
 len(train[10344]['text'])/len(train[10344]['summary']) # These numbers are similar,
 train[10344]['compression']  # ... but not exactly equal. Interesting.
 
-train[10344]["density_bin"] # TODO Research what defined defines 'mixed'
+train[10344]["density_bin"] # TODO Research what defines 'mixed'
 
 import json # this package helps make json prettier and easier to handle than a dictionary
 
@@ -212,7 +212,7 @@ def summ_catch(text):
 # df['TextRank_summary']=df['text'].apply(summ_catch)
 
 # slimming df down to a few rows to apply the TextRank function
-df_tiny = df.loc[1000:1300,('summary','text')].copy() # copy avoids the case where changing df_tiny also changes df
+df_tiny = df.loc[1000:1500].copy() # copy avoids the case where changing df_tiny also changes df
 df_tiny['TextRank_summary']=df_tiny['text'].apply(summ_catch)
 df_tiny.loc[:,['summary','TextRank_summary']] # hard to read
 df_tiny.apply(summ_compare, axis=1) # less hard to read
